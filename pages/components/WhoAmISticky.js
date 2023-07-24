@@ -8,11 +8,9 @@ const styles = makeStyles((theme) =>
       position: 'fixed',
       bottom: 0,
       left: 0,
-      padding: '4vw'
+      padding: '4vw',
+      flexGrow: 1,
     },
-    underline: {
-      borderBottom: '2px solid'
-    }
   })
 );
 
@@ -22,12 +20,11 @@ const WhoAmISticky = ({ children }) => {
   return (
     <div className={classes.sticky}>
       <Typography
-        variant="h2"
-        className="classes.underline">
-          Tag, you're it
+        variant="h2">
+          Am I Real?
       </Typography>
       <Typography variant="h4">
-        Come find me at
+        Evidence
       </Typography>
     </div>
   );

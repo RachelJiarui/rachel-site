@@ -14,8 +14,10 @@ function MyApp({ Component, pageProps }) {
           href="https://fonts.googleapis.com/css?family=Anaheim"
           rel="stylesheet"
         />
-        <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'/>
-        <link href='https://fonts.googleapis.com/css?family=Krub' rel='stylesheet'/>
+        <link rel="preconnect" href="https://fonts.googleapis.com"/>
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+        <link href="https://fonts.googleapis.com/css2?family=Victor+Mono:wght@300&display=swap" rel="stylesheet"/>
+        <link href="https://fonts.googleapis.com/css2?family=EB+Garamond&family=Victor+Mono:wght@300&display=swap" rel="stylesheet"/>
       </Head>
       <ThemeProvider theme={theme}>
         <Component {...pageProps} />

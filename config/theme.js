@@ -19,30 +19,51 @@ const theme = createTheme({
     wordBreak: 'break-all',
 
     h1: {
-      fontSize: 128,
-      '@media (max-width:500px)': {
-        fontSize: 96,
+      fontSize: 100,
+      fontFamily: "Victor Mono",
+      '@media (max-width:1000px)': {
+        fontSize: 88,
       },
+      '@media (max-width:500px)': {
+        fontSize: 68,
+      }
     },
     h2: {
-      fontSize: 96,
-      '@media (max-width:500px)': {
-        fontSize: 64,
+      fontSize: 68,
+      '@media (max-width:1000px)': {
+        fontSize: 54,
       },
-    },
-    h3: {
-      fontWeight: 600,
-      fontSize: 64,
       '@media (max-width:500px)': {
         fontSize: 48,
+      }
+    },
+    h3: {
+      fontSize: 64,
+      '@media (max-width:1000px)': {
+        fontSize: 48,
       },
+      '@media (max-width:500px)': {
+        fontSize: 32,
+      }
     },
     h4: {
-      fontWeight: 600,
       fontSize: 32,
-      '@media (max-width:500px)': {
+      '@media (max-width:1000px)': {
         fontSize: 24,
       },
+      '@media (max-width:500px)': {
+        fontSize: 20,
+      }
+    },
+    body1: {
+      fontSize: 20,
+      fontFamily: "Krub",
+      '@media (max-width:1000px)': {
+        fontSize: 18,
+      },
+      '@media (max-width:500px)': {
+        fontSize: 16,
+      }
     }
   },
 });
