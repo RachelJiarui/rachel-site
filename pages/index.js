@@ -7,10 +7,10 @@ import NavBar from './components/NavBar';
 const styles = makeStyles((theme) =>
   createStyles({
     img: {
-      width: '185%',
+      width: '175%',
       height: 'auto',
       position: 'absolute',
-      top: '-25px', 
+      top: '-50px', 
       left: '20%',
       transform: 'translateY(5%) translateX(-40%)',
       zIndex: 0
@@ -38,28 +38,26 @@ const styles = makeStyles((theme) =>
 
 export default function HomePage() {
   const classes = styles();
+
   return (
     <div>
-    <FullContainer>
-      <Grid container className={classes.gridItem}>
-        <Grid item xs={5}>
-          <Typography variant="h3">Welcome to</Typography>
-          <Typography variant="h1" className={classes.underline}>Rachel-Site</Typography>
+      <FullContainer>
+        <Grid container className={classes.gridItem}>
+          <Grid item xs={5}>
+            <Typography variant="h3">Welcome to</Typography>
+            <Typography variant="h1">Rachel-Site</Typography>
+          </Grid>
+          <Grid item xs={5} className={classes.imgGridItem}>
+            <div className={classes.imgContainer}>
+              <img className={classes.img} src="/images/cat_computer_matrix.png"/>
+            </div>
+          </Grid>
+          <Grid item xs={2}>
+            <NavBar/>
+          </Grid>
         </Grid>
-        <Grid item xs={5} className={classes.imgGridItem}>
-          <div className={classes.imgContainer}>
-            <img className={classes.img} src="/images/cat_computer_matrix.png"/>
-          </div>
-        </Grid>
-        <Grid item xs={2}>
-          <NavBar/>
-        </Grid>
-      </Grid>
-    </FullContainer>
-    <WhoAmISticky/>
-    <FullContainer>
-      <Typography variant="h2">Hello</Typography>
-    </FullContainer>
-  </div>
+      </FullContainer>
+      <WhoAmISticky/>
+    </div>
   );
 }

@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { makeStyles, createStyles } from "@mui/styles";
 import { Grid, Button } from "@mui/material";
-import Link from 'next/link';
 import NavLink from './NavLink';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import ExpandLessIcon from '@mui/icons-material/ExpandLess';
@@ -41,6 +40,85 @@ const NavBar = () => {
   const classes = styles();
   const [isExpanded, setIsExpanded] = useState(false)
   const [pointingLink, setPointingLink] = useState("")
+  const [activeLink, setActiveLink] = useState("")
+
+  const navBarNecessitiesElements = [
+    {
+      name: "Technical Projects",
+      href: "/projects",
+      sub_menu: [
+        {
+          name: "Synth",
+          href: "/projects/synth"
+        }
+      ]
+    },
+    {
+      name: "Influential Library",
+      href: "/library",
+      sub_menu: [
+        {
+          name: "Reading Now",
+          href: "/library/now"
+        }
+      ]
+    },
+    {
+      name: "Japanese Comics",
+      href: "/mangas",
+      sub_menu: [
+        {
+          name: "Reading Now",
+          href: "/mangas/now"
+        }
+      ]
+    },
+    {
+      name: "Music Collection",
+      href: "/music",
+      sub_menu: [
+        {
+          name: "Listening Now",
+          href: "/music/now"
+        },
+      ]
+    },
+    {
+      name: "Design & Philosophy",
+      href: "/inspo-philo",
+      sub_menu: [
+        {
+          name: "Current Inspiration",
+          href: "/inspo-philo/now"
+        }
+      ]
+    }
+  ]
+
+  const navBarExpandElements = [
+    {
+      heading: "Reflections",
+      elements: [
+        {
+          name: "First Year at NEU",
+          href: "/reflections/neu-freshman"
+        }
+      ]
+    },
+    {
+      heading: "Miscellaneous",
+      elements: [
+        {
+          name: "Interesting Websites",
+          href: "/misc/interesting-webs"
+        },
+        {
+          name: "My Workflow Tools",
+          href: "/misc/workflow-tools"
+        }
+      ]
+    }
+  ]
 
   const handleExpandMore = () => {
     setIsExpanded(!isExpanded);
@@ -53,71 +131,39 @@ const NavBar = () => {
       <Grid item>
         <p className={classes.header}>Necessities</p>
       </Grid>
-      <Grid item>
-        <NavLink
-          href="/projects"
-          name="Technical Projects"
-          pointingLink={pointingLink}
-          setPointingLink={setPointingLink}/>
-      </Grid>
-      <Grid item>
-        <NavLink
-          href="/library"
-          name="Influential Librarys"
-          pointingLink={pointingLink}
-          setPointingLink={setPointingLink}/>
-      </Grid>
-      <Grid item>
-        <NavLink
-          href="/mangas"
-          name="Japanese Comics"
-          pointingLink={pointingLink}
-          setPointingLink={setPointingLink}/>
-      </Grid>
-      <Grid item>
-        <NavLink
-          href="/music"
-          name="Music Collection"
-          pointingLink={pointingLink}
-          setPointingLink={setPointingLink}/>
-      </Grid>
-      <Grid item>
-        <NavLink
-          href="/inspo-philo"
-          name="Design & Philosophy"
-          pointingLink={pointingLink}
-          setPointingLink={setPointingLink}/>
-      </Grid>
+      {navBarNecessitiesElements.map((element) => (
+        <Grid item>
+          <NavLink
+            href={element.href}
+            name={element.name}
+            subMenu={element.sub_menu}
+            pointingLink={pointingLink}
+            setPointingLink={setPointingLink}
+            activeLink={activeLink}
+            setActiveLink={setActiveLink}/>
+        </Grid>
+      ))}
 
-      {isExpanded && (
-        <>
-          <Grid item>
-            <p className={classes.header}>Reflections</p>
-          </Grid>
-          <Grid item>
-            <NavLink
-              href="/reflections/neu-freshman"
-              name="First Year at NEU"
-              pointingLink={pointingLink}
-              setPointingLink={setPointingLink}/>
-          </Grid>
-          <Grid item>
-            <p className={classes.header}>Miscellaneous</p>
-          </Grid>
-          <Grid item>
-            <NavLink
-              href="/misc/interesting-webs"
-              name="Interesting Websites"
-              pointingLink={pointingLink}
-              setPointingLink={setPointingLink}/>
-            <NavLink
-              href="/misc/workflow-tools"
-              name="My Workflow Tools"
-              pointingLink={pointingLink}
-              setPointingLink={setPointingLink}/>
-          </Grid>
-        </>
-      )}
+      {isExpanded && 
+        navBarExpandElements.map((group) => (
+          <div>
+            <Grid item>
+              <p className={classes.header}>{group.heading}</p>
+            </Grid>
+            {group.elements.map((element) => (
+              <Grid item>
+                <NavLink
+                  href={element.href}
+                  name={element.name}
+                  pointingLink={pointingLink}
+                  setPointingLink={setPointingLink}
+                  activeLink={activeLink}
+                  setActiveLink={setActiveLink}/>
+              </Grid>
+            ))}
+          </div>
+        ))
+      }
 
       <Grid item>
         <Button

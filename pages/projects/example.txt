@@ -1,0 +1,30 @@
+const content = {
+  skills: [
+    "HTML", "CSS", "React", "JavaScript", "NextJs"
+  ],
+  name: "Rachel-Site",
+  hero_image: "/images/rachel-site.png", -> preferably transparent
+  desc: "It's my portfolio website",
+  contributions: "It's my contributions",
+  github: "https://github.com/RachelJiarui/rachel-site", -> or email
+  analysis: [
+    {
+      sub_text: "I worked hard on this",
+      code_block: {
+        code: `console.log("Hi")`,
+        language: "python"
+      }
+    },
+    {
+      sub_text: "I super worked hard on this",
+      sub_image: "/images/rawr.png"
+    }
+  ],
+  resources?: [
+    {
+      resource_name: "NextJS",
+      resource_link: "https://nextjs-mui-boilerplate.vercel.app/",
+      resource_tag: "Reference"
+    }
+  ]
+}

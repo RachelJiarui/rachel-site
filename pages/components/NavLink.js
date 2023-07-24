@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { makeStyles, createStyles } from "@mui/styles";
 import Link from 'next/link';
 
@@ -22,6 +22,9 @@ const styles = makeStyles((theme) =>
         color: 'gray'
       }
     },
+    active: {
+      color: 'gray'
+    },
     iconize: {
       width: "10%",
       height: "auto",
@@ -38,9 +41,17 @@ const styles = makeStyles((theme) =>
   })
 );
 
-const NavLink = ({ name, href, pointingLink, setPointingLink }) => {
+const NavLink = ({
+  name,
+  href,
+  subMenu = null,
+  pointingLink, 
+  setPointingLink,
+  activeLink,
+  setActiveLink }) => {
+    
   const classes = styles();
-  const isActive = pointingLink === name
+  const isActive = (activeLink === name) || (pointingLink === name)
 
   const handleMouseEnter = () => {
     setPointingLink(name)
@@ -50,16 +61,19 @@ const NavLink = ({ name, href, pointingLink, setPointingLink }) => {
     setPointingLink("")
   }
 
+  const handleMouseClick = () => {
+    setActiveLink(name)
+  }
+
   return (
     <div
       className={classes.linkContainer}
       onMouseEnter={handleMouseEnter}
-      onMouseLeave={handleMouseLeave}>
+      onMouseLeave={handleMouseLeave}
+      onClick={handleMouseClick}>
+      {isActive && (<img className={classes.iconize} src="/images/pointing.png"/>)}
       <Link href={href}>
-        <>
-          {isActive && (<img className={classes.iconize} src="/images/pointing.png"/>)}
-          <a className={classes.link}>{name}</a>
-        </>
+          <a className={`${classes.link} ${isActive && classes.active}`}>{name}</a>
       </Link>
     </div>
   );
