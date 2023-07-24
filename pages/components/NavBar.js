@@ -1,14 +1,13 @@
-import React from "react";
+import React, { useState } from 'react';
 import { makeStyles, createStyles } from "@mui/styles";
-import { Grid } from "@mui/material";
+import { Grid, Button } from "@mui/material";
 import Link from 'next/link';
+import NavLink from './NavLink';
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import ExpandLessIcon from '@mui/icons-material/ExpandLess';
 
 const styles = makeStyles((theme) =>
   createStyles({
-    navBar: {
-      textAlign: "right",
-      zIndex: 1
-    },
     header: {
       fontFamily: "EB Garamond, serif",
       fontSize: 22,
@@ -16,64 +15,123 @@ const styles = makeStyles((theme) =>
       margin: 4,
       borderBottom: "1px solid"
     },
-    link: {
-      fontFamily: 'Anaheim, sans-serif',
-      fontSize: 18,
-      textDecoration: "none",
-      color: "black",
-      '&:visited': {
-        color: 'inherit'
-      },
-      '&:hover': {
-        color: 'gray'
-      }
-    },
     expandMore: {
-      fontFamily: "EB Garamond",
-      fontSize: 18,
-      fontStyle: "italic"
+      fontFamily: 'Anaheim, sans-serif',
+      fontSize: 16,
+      fontStyle: "italic",
+      color: "black",
+      textTransform: 'none',
+      backgroundColor: 'transparent',
+      boxShadow: 'none',
+      '&:hover': {
+        backgroundColor: 'transparent',
+        boxShadow: 'none',
+        color: "gray"
+      },
+    },
+    expandIconContainer: {
+      display: "flex",
+      justifyContent: "center",
+      alignItems: "center"
     }
   })
 );
 
 const NavBar = () => {
   const classes = styles();
+  const [isExpanded, setIsExpanded] = useState(false)
+  const [pointingLink, setPointingLink] = useState("")
+
+  const handleExpandMore = () => {
+    setIsExpanded(!isExpanded);
+  }
 
   return (
     <Grid 
-      ontainer
-      direction="column"
-      className={classes.navBar}>
+      container
+      direction="column">
       <Grid item>
         <p className={classes.header}>Necessities</p>
       </Grid>
       <Grid item>
-        <Link href="/projects">
-          <a className={classes.link}>Technical Projects</a>
-        </Link>
+        <NavLink
+          href="/projects"
+          name="Technical Projects"
+          pointingLink={pointingLink}
+          setPointingLink={setPointingLink}/>
       </Grid>
       <Grid item>
-        <Link href="/library">
-          <a className={classes.link}>Influential Library</a>
-        </Link>
+        <NavLink
+          href="/library"
+          name="Influential Librarys"
+          pointingLink={pointingLink}
+          setPointingLink={setPointingLink}/>
       </Grid>
       <Grid item>
-        <Link href="/mangas">
-          <a className={classes.link}>Japanese Comics</a>
-        </Link>
+        <NavLink
+          href="/mangas"
+          name="Japanese Comics"
+          pointingLink={pointingLink}
+          setPointingLink={setPointingLink}/>
       </Grid>
       <Grid item>
-        <Link href="/music">
-          <a className={classes.link}>Music Collection</a>
-        </Link>
+        <NavLink
+          href="/music"
+          name="Music Collection"
+          pointingLink={pointingLink}
+          setPointingLink={setPointingLink}/>
       </Grid>
       <Grid item>
-        <Link href="/inspiration">
-          <a className={classes.link}>Inspiration & Philosophy</a>
-        </Link>
+        <NavLink
+          href="/inspo-philo"
+          name="Design & Philosophy"
+          pointingLink={pointingLink}
+          setPointingLink={setPointingLink}/>
       </Grid>
+
+      {isExpanded && (
+        <>
+          <Grid item>
+            <p className={classes.header}>Reflections</p>
+          </Grid>
+          <Grid item>
+            <NavLink
+              href="/reflections/neu-freshman"
+              name="First Year at NEU"
+              pointingLink={pointingLink}
+              setPointingLink={setPointingLink}/>
+          </Grid>
+          <Grid item>
+            <p className={classes.header}>Miscellaneous</p>
+          </Grid>
+          <Grid item>
+            <NavLink
+              href="/misc/interesting-webs"
+              name="Interesting Websites"
+              pointingLink={pointingLink}
+              setPointingLink={setPointingLink}/>
+            <NavLink
+              href="/misc/workflow-tools"
+              name="My Workflow Tools"
+              pointingLink={pointingLink}
+              setPointingLink={setPointingLink}/>
+          </Grid>
+        </>
+      )}
+
       <Grid item>
-        <p className={classes.expandMore}>Expand for more</p>
+        <Button
+          disableElevation
+          variant="text"
+          disableRipple
+          onClick={handleExpandMore}
+          className={classes.expandMore}>
+            <div className={classes.expandIconContainer}>
+              {isExpanded ? <ExpandLessIcon /> : <ExpandMoreIcon />}
+            </div>
+            {isExpanded ? ("Collapse") : ("Expand for more")}
+        </Button>
+
       </Grid>
     </Grid>
   );
