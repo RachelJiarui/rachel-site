@@ -48,6 +48,7 @@ const theme = createTheme({
     },
     h4: {
       fontSize: 32,
+      fontFamily: "EB Garamond, san-serif",
       '@media (max-width:1000px)': {
         fontSize: 24,
       },
@@ -56,13 +57,12 @@ const theme = createTheme({
       }
     },
     body1: {
-      fontSize: 20,
-      fontFamily: "Krub",
+      fontSize: 16,
       '@media (max-width:1000px)': {
-        fontSize: 18,
+        fontSize: 15,
       },
       '@media (max-width:500px)': {
-        fontSize: 16,
+        fontSize: 14,
       }
     }
   },

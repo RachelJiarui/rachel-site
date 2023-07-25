@@ -2,7 +2,7 @@ import { Typography, Grid } from "@mui/material";
 import { makeStyles, createStyles } from "@mui/styles";
 import FullContainer from './components/FullContainer';
 import WhoAmISticky from './components/WhoAmISticky';
-import NavBar from './components/NavBar';
+import NavBar from './components/common/NavBar';
 
 const styles = makeStyles((theme) =>
   createStyles({

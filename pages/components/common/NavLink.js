@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { makeStyles, createStyles } from "@mui/styles";
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 
 const styles = makeStyles((theme) =>
   createStyles({
@@ -44,14 +45,15 @@ const styles = makeStyles((theme) =>
 const NavLink = ({
   name,
   href,
-  subMenu = null,
   pointingLink, 
-  setPointingLink,
-  activeLink,
-  setActiveLink }) => {
-    
+  setPointingLink}) => {
+
   const classes = styles();
-  const isActive = (activeLink === name) || (pointingLink === name)
+  const router = useRouter();
+  const currentRoute = router.pathname;
+
+  const hasPointer = pointingLink === name
+  const isSelected = currentRoute === href
 
   const handleMouseEnter = () => {
     setPointingLink(name)
@@ -61,20 +63,17 @@ const NavLink = ({
     setPointingLink("")
   }
 
-  const handleMouseClick = () => {
-    setActiveLink(name)
-  }
-
   return (
-    <div
-      className={classes.linkContainer}
-      onMouseEnter={handleMouseEnter}
-      onMouseLeave={handleMouseLeave}
-      onClick={handleMouseClick}>
-      {isActive && (<img className={classes.iconize} src="/images/pointing.png"/>)}
-      <Link href={href}>
-          <a className={`${classes.link} ${isActive && classes.active}`}>{name}</a>
-      </Link>
+    <div>
+      <div
+        className={classes.linkContainer}
+        onMouseEnter={handleMouseEnter}
+        onMouseLeave={handleMouseLeave}>
+        {(hasPointer || isSelected) && (<img className={classes.iconize} src="/images/pointing.png"/>)}
+        <Link href={href}>
+            <a className={`${classes.link} ${(hasPointer || isSelected) && classes.active}`}>{name}</a>
+        </Link>
+      </div>
     </div>
   );
 };

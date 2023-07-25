@@ -28,10 +28,17 @@ const styles = makeStyles((theme) =>
         color: "gray"
       },
     },
+    keepingTop: {
+      zIndex: 69,
+    },
     expandIconContainer: {
       display: "flex",
       justifyContent: "center",
       alignItems: "center"
+    },
+    justifyExpandButton: {
+      display: "flex",
+      justifyContent: "flex-end"
     }
   })
 );
@@ -40,7 +47,6 @@ const NavBar = () => {
   const classes = styles();
   const [isExpanded, setIsExpanded] = useState(false)
   const [pointingLink, setPointingLink] = useState("")
-  const [activeLink, setActiveLink] = useState("")
 
   const navBarNecessitiesElements = [
     {
@@ -127,45 +133,41 @@ const NavBar = () => {
   return (
     <Grid 
       container
+      className={classes.keepingTop}
       direction="column">
       <Grid item>
-        <p className={classes.header}>Necessities</p>
+        <p className={classes.header}>Navigation</p>
       </Grid>
-      {navBarNecessitiesElements.map((element) => (
-        <Grid item>
+      {navBarNecessitiesElements.map((element, index) => (
+        <Grid item key={`navBarNecessities-${index}`}>
           <NavLink
             href={element.href}
             name={element.name}
-            subMenu={element.sub_menu}
             pointingLink={pointingLink}
-            setPointingLink={setPointingLink}
-            activeLink={activeLink}
-            setActiveLink={setActiveLink}/>
+            setPointingLink={setPointingLink}/>
         </Grid>
       ))}
 
       {isExpanded && 
-        navBarExpandElements.map((group) => (
-          <div>
+        navBarExpandElements.map((group, index) => (
+          <div key={`navBarExpansion-${index}`}>
             <Grid item>
               <p className={classes.header}>{group.heading}</p>
             </Grid>
-            {group.elements.map((element) => (
-              <Grid item>
+            {group.elements.map((element, index) => (
+              <Grid item key={`navBarExpansionGroup-${index}`}>
                 <NavLink
                   href={element.href}
                   name={element.name}
                   pointingLink={pointingLink}
-                  setPointingLink={setPointingLink}
-                  activeLink={activeLink}
-                  setActiveLink={setActiveLink}/>
+                  setPointingLink={setPointingLink}/>
               </Grid>
             ))}
           </div>
         ))
       }
 
-      <Grid item>
+      <Grid item className={classes.justifyExpandButton}>
         <Button
           disableElevation
           variant="text"

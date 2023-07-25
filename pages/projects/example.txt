@@ -3,24 +3,29 @@ const content = {
     "HTML", "CSS", "React", "JavaScript", "NextJs"
   ],
   name: "Rachel-Site",
-  hero_image: "/images/rachel-site.png", -> preferably transparent
-  desc: "It's my portfolio website",
-  contributions: "It's my contributions",
-  github: "https://github.com/RachelJiarui/rachel-site", -> or email
-  analysis: [
+  hero_image: "/images/old_comp.png",
+  desc: [
     {
-      sub_text: "I worked hard on this",
-      code_block: {
-        code: `console.log("Hi")`,
-        language: "python"
-      }
+      bold: "Motivation",
+      text: "Contribution is important and beautifying my world is important to me"
     },
     {
-      sub_text: "I super worked hard on this",
-      sub_image: "/images/rawr.png"
+      bold: "Gay ass",
+      text: "WOOOOOOOOO hi hi hi text me i miss you juliette"
     }
   ],
-  resources?: [
+  contributions: [
+    {
+      bold: "Motivation",
+      text: "Contribution is important and beautifying my world is important to me"
+    },
+    {
+      bold: "Gay ass",
+      text: "WOOOOOOOOO hi hi hi text me i miss you juliette"
+    }
+  ],
+  github: "https://github.com/RachelJiarui/rachel-site",
+  resources: [
     {
       resource_name: "NextJS",
       resource_link: "https://nextjs-mui-boilerplate.vercel.app/",
