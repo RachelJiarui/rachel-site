@@ -44,6 +44,9 @@ const styles = makeStyles((theme) =>
     },
     pointerCursor: {
       cursor: "pointer"
+    },
+    captionSpacing: {
+      padding: "2vw"
     }
   })
 );
@@ -178,14 +181,17 @@ const Library = () => {
             ))}
           </div>
         </Grid>
-        <Grid item xs={7}>
+        <Grid item className={classes.captionSpacing} xs={7}>
           <Typography
             variant="h3"
             className={classes.pointerCursor}
             onClick={handleReset}>Influential Library</Typography>
           {selectedBook ?
-            <p className={classes.caption}>{selectedBook.caption}</p>
-          : <p>{defaultCaption}</p>}
+            <>
+              <Typography variant="h4">{selectedBook.quote}</Typography>
+              <p className={classes.caption}>{selectedBook.caption}</p>
+            </>
+          : <p className={classes.caption}>{defaultCaption}</p>}
         </Grid>
       </Grid>
 

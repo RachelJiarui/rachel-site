@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { makeStyles, createStyles } from "@mui/styles";
 import axios from 'axios';
 
@@ -38,7 +38,7 @@ const BookCard = ({ book, isGray }) => {
   };
 
   // Fetch the book cover when the component mounts
-  React.useEffect(() => {
+  useEffect(() => {
     fetchBookCover();
   }, [book.title]);
 
