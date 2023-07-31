@@ -1,6 +1,6 @@
 import React from 'react';
 import { makeStyles, createStyles } from "@mui/styles";
-import ProjectTemplate from '../components/templates/ProjectTemplate'
+import ProjectTemplate from '../components/cards/ProjectTemplate'
 
 const styles = makeStyles((theme) =>
   createStyles({

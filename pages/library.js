@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { makeStyles, createStyles } from "@mui/styles";
 import { Grid, Typography } from "@mui/material";
 import PageContainer from "./components/common/PageContainer";
-import BookCard from "./api/BookCard";
+import BookCard from "./components/cards/BookCard";
 
 const styles = makeStyles((theme) =>
   createStyles({

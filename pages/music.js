@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { makeStyles, createStyles } from "@mui/styles";
 import { Grid, Typography } from "@mui/material";
 import PageContainer from "./components/common/PageContainer";
-import MangaCard from "./components/cards/MangaCard";
+import MusicCard from "./components/cards/MusicCard";
 
 const styles = makeStyles((theme) =>
   createStyles({
@@ -11,7 +11,7 @@ const styles = makeStyles((theme) =>
       flexWrap: 'wrap',
       height: '100vh'
     },
-    bookContainer: {
+    musicContainer: {
       margin: 10,
       cursor: "pointer"
     },
@@ -51,37 +51,27 @@ const styles = makeStyles((theme) =>
   })
 );
 
-const mangaList = [
+const musicList = [
   {
-    title: "Goodnight Punpun",
-    author: "idk",
-    caption: "Pretty good"
+    title: "A Lonely Night",
+    artist: "The Weeknd",
+    history: "From 'Starboy'",
+    caption: "Caption"
   },
-  {
-    title: "Blood on the Tracks",
-    author: "idk",
-    caption: "Gas"
-  }
 ]
 
-const defaultCaption = "This is my manga collection"
+const defaultCaption = "This is my music"
 
-const Mangas = () => {
+const Music = () => {
   const classes = styles();
-  const [selectedManga, setSelectedManga] = useState(null)
+  const [selectedMusic, setSelectedMusic] = useState(null)
 
   const handleClick = (book) => {
-    setSelectedManga(book)
-    console.log("book title: " + book.title)
-    if (selectedManga) {
-      console.log("selectedBook: " + selectedManga.title)
-    } else {
-      console.log("selectedBook: null")
-    }
+    setSelectedMusic(book)
   }
 
   const handleReset = () => {
-    setSelectedManga(null)
+    setSelectedMusic(null)
   }
 
   return (
@@ -89,14 +79,14 @@ const Mangas = () => {
       <Grid container>
         <Grid item xs={5} className={classes.scrollLibrary}>
           <div className={classes.libraryContainer}>
-            {mangaList.map((element, index) => (
+            {musicList.map((element, index) => (
               <div
-                className={classes.bookContainer}
-                key={`mangas-${index}`}
+                className={classes.musicContainer}
+                key={`library-${index}`}
                 onClick={() => handleClick(element)}>
-                <MangaCard
-                  book={element}
-                  isGray={selectedManga ? selectedManga.title === element.title && selectedManga.author === element.author : false}/>
+                <MusicCard
+                  music={element}
+                  isGray={selectedMusic ? selectedMusic.title === element.title && selectedMusic.artist === element.artist : false}/>
               </div>
             ))}
           </div>
@@ -105,28 +95,27 @@ const Mangas = () => {
           <Typography
             variant="h3"
             className={classes.pointerCursor}
-            onClick={handleReset}>Japanese Comics</Typography>
-          {selectedManga ?
-            <>
-              {selectedManga.images && selectedManga.images.map((image, index) => (
-                <img key={`mangaImages-${index}`} src={image.href}/>
-              ))}
-              <p className={classes.caption}>{selectedManga.caption}</p>
-            </>
-          : <p className={classes.caption}>{defaultCaption}</p>}
+            onClick={handleReset}>Music Collection</Typography>
+          {selectedMusic ?
+          <>
+            <p className={classes.history}>{selectedMusic.history}</p>
+            <p className={classes.caption}>{selectedMusic.caption}</p>
+          </>
+           :
+            <p className={classes.caption}>{defaultCaption}</p>}
         </Grid>
       </Grid>
 
-      {selectedManga && (
+      {selectedMusic && (
         <div className={classes.sticky}>
-          {console.log("At card: " + selectedManga.title)}
-          <MangaCard book={selectedManga}/>
-          <p className={classes.title}>{selectedManga.title}</p>
-          <p className={classes.author}>{"by " + selectedManga.author}</p>
+          <MusicCard music={selectedMusic}/>
+          <p className={classes.title}>{selectedMusic.title}</p>
+          <p className={classes.author}>{"by " + selectedMusic.author}</p>
         </div>
       )}
+      <img src="/images/cat_music.png"/>
     </PageContainer>
   );
 };
 
-export default Mangas;
+export default Music;
