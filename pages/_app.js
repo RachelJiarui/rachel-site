@@ -1,5 +1,4 @@
 import Head from "next/head";
-import theme from "@/config/theme";
 import ThemeProvider from "@/config/StyledMaterialThemeProvider";
 
 function MyApp({ Component, pageProps }) {
@@ -14,10 +13,9 @@ function MyApp({ Component, pageProps }) {
           href="https://fonts.googleapis.com/css?family=Anaheim"
           rel="stylesheet"
         />
-        <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'/>
-        <link href='https://fonts.googleapis.com/css?family=Krub' rel='stylesheet'/>
+        <link href="https://fonts.googleapis.com/css2?family=REM:wght@600&display=swap" rel="stylesheet"></link>
       </Head>
-      <ThemeProvider theme={theme}>
+      <ThemeProvider>
         <Component {...pageProps} />
       </ThemeProvider>
     </>

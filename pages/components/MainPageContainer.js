@@ -4,15 +4,18 @@ import { makeStyles, createStyles } from "@mui/styles";
 const styles = makeStyles((theme) =>
   createStyles({
     container: {
+      display: 'flex',
+      flexDirection: 'column',
+      justifyContent: 'space-between',
       width: '100%',
       height: '100vh',
       backgroundColor: theme.palette.background.default,
-      padding: '4vw'
+      padding: '4vw',
     }
   })
 );
 
-const FullContainer = ({ children }) => {
+const MainPageContainer = ({ children }) => {
   const classes = styles();
 
   return (
@@ -22,4 +25,4 @@ const FullContainer = ({ children }) => {
   );
 };
 
-export default FullContainer;
+export default MainPageContainer;
