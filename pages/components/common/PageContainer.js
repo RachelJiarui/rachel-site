@@ -18,11 +18,14 @@ const styles = makeStyles((theme) =>
       left: '50%',
       transform: 'translateX(-50%) translateY(-25%)',
     },
-    grabCursor: {
-      cursor: 'grab',
-    },
     childrenContainer: {
       paddingTop: '4vh'
+    },
+    hover: {
+      cursor: 'grab',
+      '&:hover': {
+        color: "#6b6b6b"
+      },
     }
   })
 );
@@ -38,7 +41,7 @@ const PageContainer = ({ children }) => {
             <Grid item>
               <div className={classes.headerContainer}>
                 <Link href="/">
-                  <Typography className={classes.grabCursor}  variant="h4">Rachel-Site</Typography>
+                  <Typography className={classes.hover} variant="h4">Rachel-Site</Typography>
                 </Link>
               </div>
             </Grid>

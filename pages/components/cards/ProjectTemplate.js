@@ -44,6 +44,9 @@ const styles = makeStyles((theme) =>
     },
     iconSpacing: {
       marginRight: "0.5vw"
+    },
+    skills: {
+      display: 'inline'
     }
   })
 );
@@ -53,8 +56,12 @@ const ProjectTemplate = ( {content} ) => {
 
   return (
     <PageContainer>
-      <Typography variant="h5">{content.skills}</Typography> {/*map*/}
-      <Typography variant="h2">{content.name}</Typography>
+      <div className={classes.textContainer}>
+        {content.skills.map((skill, index) => (
+          <Typography variant="h5" key={`skill-${index}`} component="span">{skill + ((index + 1 !== content.skills.length) ? " | " : "")}</Typography>
+        ))}
+        <Typography variant="h2">{content.name}</Typography>
+      </div>
       <Grid container className={classes.textContainer} flexDirection="column">
         <img className={classes.heroImage} src={content.hero_image}/>
         {content.github && (

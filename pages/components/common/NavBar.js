@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { makeStyles, createStyles } from "@mui/styles";
-import { Grid, Button } from "@mui/material";
+import { Grid, Button, Typography } from "@mui/material";
 import NavLink from './NavLink';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import ExpandLessIcon from '@mui/icons-material/ExpandLess';
@@ -8,9 +8,11 @@ import ExpandLessIcon from '@mui/icons-material/ExpandLess';
 const styles = makeStyles((theme) =>
   createStyles({
     header: {
-      fontFamily: "EB Garamond, serif",
-      fontSize: 22,
+      textTransform: 'uppercase',
+      fontFamily: 'REM, sans-serif',
+      fontSize: 18,
       fontWeight: 500,
+      color: theme.palette.main.black,
       margin: 4,
       borderBottom: "1px solid"
     },
@@ -45,20 +47,10 @@ const styles = makeStyles((theme) =>
 
 const NavBar = () => {
   const classes = styles();
-  const [isExpanded, setIsExpanded] = useState(false)
+  const [isExpanded, setIsExpanded] = useState(true)
   const [pointingLink, setPointingLink] = useState("")
 
-  const navBarNecessitiesElements = [
-    {
-      name: "Technical Projects",
-      href: "/projects",
-      sub_menu: [
-        {
-          name: "Synth",
-          href: "/projects/synth"
-        }
-      ]
-    },
+  const navBarCollection = [
     {
       name: "Influential Library",
       href: "/library",
@@ -80,7 +72,7 @@ const NavBar = () => {
       ]
     },
     {
-      name: "Music Collection",
+      name: "Music Catalog",
       href: "/music",
       sub_menu: [
         {
@@ -112,15 +104,15 @@ const NavBar = () => {
       ]
     },
     {
-      heading: "Miscellaneous",
+      heading: "Interesting Links",
       elements: [
         {
           name: "Interesting Websites",
-          href: "/misc/interesting-webs"
+          href: "#"
         },
         {
           name: "My Workflow Tools",
-          href: "/misc/workflow-tools"
+          href: "#"
         }
       ]
     }
@@ -136,9 +128,9 @@ const NavBar = () => {
       className={classes.keepingTop}
       direction="column">
       <Grid item>
-        <p className={classes.header}>Navigation</p>
+        <p className={classes.header}>My Collections</p>
       </Grid>
-      {navBarNecessitiesElements.map((element, index) => (
+      {navBarCollection.map((element, index) => (
         <Grid item key={`navBarNecessities-${index}`}>
           <NavLink
             href={element.href}
@@ -177,7 +169,9 @@ const NavBar = () => {
             <div className={classes.expandIconContainer}>
               {isExpanded ? <ExpandLessIcon /> : <ExpandMoreIcon />}
             </div>
-            {isExpanded ? ("Collapse") : ("Expand for more")}
+            <Typography variant="body1">
+              {isExpanded ? ("Collapse") : ("Expand for more")}
+            </Typography>
         </Button>
 
       </Grid>

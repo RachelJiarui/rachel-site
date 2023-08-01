@@ -9,14 +9,16 @@ const styles = makeStyles((theme) =>
     libraryContainer: {
       display: 'flex',
       flexWrap: 'wrap',
-      height: '100vh'
+      height: '80vh',
     },
     bookContainer: {
       margin: 10,
-      cursor: "pointer"
+      cursor: "pointer",
+      direction: 'ltr'
     },
     scrollLibrary: {
       overflow: 'auto',
+      direction: 'rtl',
       zIndex: 1
     },
     sticky: {
@@ -25,12 +27,13 @@ const styles = makeStyles((theme) =>
       right: 0,
       padding: '4vw',
       flexGrow: 1,
+      direction: "rtl"
     },
     title: {
       fontFamily: 'Anaheim, sans-serif',
       fontSize: 36,
       color: "gray",
-      margin: 0
+      margin: 0 
     },
     author: {
       fontFamily: 'Anaheim, sans-serif',
@@ -40,13 +43,21 @@ const styles = makeStyles((theme) =>
     },
     caption: {
       fontFamily: 'Anaheim, sans-serif',
-      fontSize: 18,
     },
     pointerCursor: {
-      cursor: "pointer"
+      marginBottom: '2vh',
+      cursor: 'pointer',
+      '&:hover': {
+        color: "#6b6b6b"
+      },
     },
     captionSpacing: {
-      padding: "2vw"
+      padding: '2vw',
+    },
+    quote: {
+      paddingLeft: '2vw',
+      marginBottom: '2vh',
+      borderLeft: '2px solid black'
     }
   })
 );
@@ -183,15 +194,15 @@ const Library = () => {
         </Grid>
         <Grid item className={classes.captionSpacing} xs={7}>
           <Typography
-            variant="h3"
+            variant="h2"
             className={classes.pointerCursor}
             onClick={handleReset}>Influential Library</Typography>
           {selectedBook ?
             <>
-              <Typography variant="h4">{selectedBook.quote}</Typography>
-              <p className={classes.caption}>{selectedBook.caption}</p>
+              <Typography variant="body2" className={classes.quote}>{selectedBook.quote}</Typography>
+              <Typography variant="body1" className={classes.caption}>{selectedBook.caption}</Typography>
             </>
-          : <p className={classes.caption}>{defaultCaption}</p>}
+          : <Typography variant="body1" className={classes.caption}>{defaultCaption}</Typography>}
         </Grid>
       </Grid>
 

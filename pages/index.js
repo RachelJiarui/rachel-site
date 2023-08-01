@@ -1,8 +1,10 @@
 import { Typography, Grid } from "@mui/material";
 import { makeStyles, createStyles } from "@mui/styles";
-import FullContainer from './components/FullContainer';
-import WhoAmISticky from './components/WhoAmISticky';
+import MainPageContainer from './components/MainPageContainer';
+import SpinningMan from './components/SpinningMan';
+import AmIReal from './components/AmIReal';
 import NavBar from './components/common/NavBar';
+import Link from "next/link";
 
 const styles = makeStyles((theme) =>
   createStyles({
@@ -30,18 +32,98 @@ const styles = makeStyles((theme) =>
       display: 'flex',
       height: '100%'
     },
-    spacing: {
-      marginTop: "24px"
+    technicalProjects: {
+      fontFamily: 'Anaheim, sans-serif',
+      fontSize: 32,
+      color: "gray",
+      cursor: "grab",
+      zIndex: 1,
+      marginTop: '2vh',
+      marginBottom: 0,
+      '&:hover': {
+        color: "black"
+      }
+    },
+    listPadding: {
+      paddingLeft: "6vw",
+      overflowY: 'auto',
+    },
+    img1: {
+      width: '130%',
+      height: 'auto',
+      position: 'absolute',
+      top: "20vh", 
+      left: '20%',
+      transform: 'translateY(10%) translateX(-35%)',
+      zIndex: 0
+    },
+    imgContainer1: {
+      flexGrow: 1,
+      display: "flex",
+      alignItems: 'center',
+      height: "100%",
+      position: 'relative',
+    },
+    scrollFeature: {
+      display: 'flex',
+      flexWrap: 'wrap',
+      height: '50vh',
+      top: 20
+    },
+    scrollText: {
+      fontFamily: 'Anaheim, sans-serif',
+      fontSize: 18,
+      color: "gray",
+      paddingTop: '1vw',
+      paddingLeft: '6vw',
+    },
+    techHeader: {
+      paddingTop: "2vw",
+      position: 'sticky',
+      top: 0,
+      backgroundColor: theme.palette.background.default,
+      zIndex: 5
+    },
+    linkSpacing: {
+      marginTop: '1vh',
+      marginBottom: '1vh'
     }
   })
 );
+
+const technicalProjectsList = [
+  {
+    name: "Code Synthesization using Large Language Models",
+    href: "/projects/synth-LLM"
+  },
+  {
+    name: "Uotchis: Secure Hardware and Non-Fungibility",
+    href: "/projects/uotchis"
+  },
+  {
+    name: "Speech Identification and Generation",
+    href: "/projects/speech-ai"
+  },
+  {
+    name: "Image Seam Carver",
+    href: "/projects/image-seam-carver"
+  },
+  {
+    name: "Invictuss Services Page",
+    href: "/projects/invictuss"
+  },
+  {
+    name: "Rachel-Site",
+    href: "/projects/rachel-site"
+  }
+]
 
 export default function HomePage() {
   const classes = styles();
 
   return (
     <div>
-      <FullContainer>
+      <MainPageContainer>
         <Grid container className={classes.gridItem}>
           <Grid item xs={5}>
             <Typography variant="h3">Welcome to</Typography>
@@ -56,8 +138,31 @@ export default function HomePage() {
             <NavBar/>
           </Grid>
         </Grid>
-      </FullContainer>
-      <WhoAmISticky/>
+        <SpinningMan/>
+      </MainPageContainer>
+      <MainPageContainer>
+        <Grid container>
+          <Grid item className={classes.imgContainer1} xs={6}>
+            <img className={classes.img1} src="/images/cat_comp_projects.png"/>
+          </Grid>
+          <Grid item xs={6}>
+            <Grid container className={classes.listPadding} flexDirection="column">
+              <Typography variant="h2" className={classes.techHeader}>Technical Projects</Typography>
+              <div className={classes.scrollFeature}>
+                {technicalProjectsList.map((elements, index) => (
+                  <Link className={classes.linkSpacing} href={elements.href} key={`techProject-${index}`}>
+                    <p className={classes.technicalProjects}>
+                      {index+1 < 10 ? "0" + (index+1) : (index+1)} {elements.name}
+                    </p>
+                  </Link>
+                ))}
+              </div>
+            </Grid>
+            <div className={classes.scrollText}>Scroll for more {"01 - " + (technicalProjectsList.length<10 ? "0" + technicalProjectsList.length : technicalProjectsList.length)} </div>
+            <AmIReal/>
+          </Grid>
+        </Grid>
+      </MainPageContainer>
     </div>
   );
 }

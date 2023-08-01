@@ -9,14 +9,16 @@ const styles = makeStyles((theme) =>
     libraryContainer: {
       display: 'flex',
       flexWrap: 'wrap',
-      height: '100vh'
+      height: '80vh'
     },
     musicContainer: {
       margin: 10,
-      cursor: "pointer"
+      cursor: "pointer",
+      direction: 'ltr'
     },
     scrollLibrary: {
       overflow: 'auto',
+      direction: 'rtl',
       zIndex: 1
     },
     sticky: {
@@ -25,6 +27,7 @@ const styles = makeStyles((theme) =>
       right: 0,
       padding: '4vw',
       flexGrow: 1,
+      direction: "rtl"
     },
     title: {
       fontFamily: 'Anaheim, sans-serif',
@@ -43,11 +46,23 @@ const styles = makeStyles((theme) =>
       fontSize: 18,
     },
     pointerCursor: {
-      cursor: "pointer"
+      marginBottom: '2vh',
+      cursor: "pointer",
+      '&:hover': {
+        color: "#6b6b6b"
+      },
     },
     captionSpacing: {
       padding: "2vw"
-    }
+    },
+    imgPositioning: {
+      position: 'absolute',
+      width: '45%',
+      height: 'auto',
+      top: "15vh", 
+      left: '45vw',
+      transform: 'translateY(10%) translateX(-35%)',
+    },
   })
 );
 
@@ -93,16 +108,16 @@ const Music = () => {
         </Grid>
         <Grid item className={classes.captionSpacing} xs={7}>
           <Typography
-            variant="h3"
+            variant="h2"
             className={classes.pointerCursor}
             onClick={handleReset}>Music Collection</Typography>
           {selectedMusic ?
           <>
-            <p className={classes.history}>{selectedMusic.history}</p>
-            <p className={classes.caption}>{selectedMusic.caption}</p>
+            <Typography variant="body2" className={classes.history}>{selectedMusic.history}</Typography>
+            <Typography variant="body1" className={classes.caption}>{selectedMusic.caption}</Typography>
           </>
            :
-            <p className={classes.caption}>{defaultCaption}</p>}
+            <Typography variant="body1" className={classes.caption}>{defaultCaption}</Typography>}
         </Grid>
       </Grid>
 
@@ -113,7 +128,7 @@ const Music = () => {
           <p className={classes.author}>{"by " + selectedMusic.author}</p>
         </div>
       )}
-      <img src="/images/cat_music.png"/>
+      <img className={classes.imgPositioning} src="/images/cat_music.png"/>
     </PageContainer>
   );
 };

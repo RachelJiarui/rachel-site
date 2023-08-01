@@ -13,8 +13,7 @@ function MyApp({ Component, pageProps }) {
           href="https://fonts.googleapis.com/css?family=Anaheim"
           rel="stylesheet"
         />
-        <link href="https://fonts.googleapis.com/css2?family=Victor+Mono:wght@300&display=swap" rel="stylesheet"/>
-        <link href="https://fonts.googleapis.com/css2?family=EB+Garamond&family=Victor+Mono:wght@300&display=swap" rel="stylesheet"/>
+        <link href="https://fonts.googleapis.com/css2?family=REM:wght@600&display=swap" rel="stylesheet"></link>
       </Head>
       <ThemeProvider>
         <Component {...pageProps} />

@@ -15,7 +15,7 @@ const styles = makeStyles((theme) =>
   })
 );
 
-const FullContainer = ({ children }) => {
+const MainPageContainer = ({ children }) => {
   const classes = styles();
 
   return (
@@ -25,4 +25,4 @@ const FullContainer = ({ children }) => {
   );
 };
 
-export default FullContainer;
+export default MainPageContainer;

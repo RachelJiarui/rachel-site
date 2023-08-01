@@ -7,8 +7,8 @@ const theme = createTheme({
     background: {
       default: "#f2f1e9",
     },
-    secondary: {
-      main: "#19857b",
+    main: {
+      black: "#2b2b2b",
     },
     error: {
       main: red.A400,
@@ -20,7 +20,8 @@ const theme = createTheme({
 
     h1: {
       fontSize: 100,
-      fontFamily: "Victor Mono",
+      textTransform: 'uppercase',
+      fontFamily: 'REM, sans-serif',
       '@media (max-width:1000px)': {
         fontSize: 88,
       },
@@ -29,12 +30,14 @@ const theme = createTheme({
       }
     },
     h2: {
-      fontSize: 68,
+      fontSize: 45,
+      textTransform: 'uppercase',
+      fontFamily: 'REM, sans-serif',
       '@media (max-width:1000px)': {
-        fontSize: 54,
+        fontSize: 32,
       },
       '@media (max-width:500px)': {
-        fontSize: 48,
+        fontSize: 28,
       }
     },
     h3: {
@@ -48,7 +51,8 @@ const theme = createTheme({
     },
     h4: {
       fontSize: 32,
-      fontFamily: "EB Garamond, san-serif",
+      textTransform: 'uppercase',
+      fontFamily: 'REM, sans-serif',
       '@media (max-width:1000px)': {
         fontSize: 24,
       },
@@ -57,9 +61,19 @@ const theme = createTheme({
       }
     },
     body1: {
-      fontSize: 16,
+      fontSize: 18,
       '@media (max-width:1000px)': {
-        fontSize: 15,
+        fontSize: 16,
+      },
+      '@media (max-width:500px)': {
+        fontSize: 14,
+      }
+    },
+    body2: {
+      fontSize: 18,
+      fontWeight: 600,
+      '@media (max-width:1000px)': {
+        fontSize: 16,
       },
       '@media (max-width:500px)': {
         fontSize: 14,

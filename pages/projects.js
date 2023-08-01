@@ -1,7 +1,7 @@
 import React from 'react';
 import { makeStyles, createStyles } from "@mui/styles";
 import { Grid, Typography } from "@mui/material";
-import PageContainer from "../components/common/PageContainer";
+import PageContainer from "./components/common/PageContainer";
 import Link from "next/link";
 
 const styles = makeStyles((theme) =>
