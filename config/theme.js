@@ -78,6 +78,18 @@ const theme = createTheme({
       '@media (max-width:500px)': {
         fontSize: 14,
       }
+    },
+    header: {
+      display: 'block',
+      textTransform: 'uppercase',
+      fontFamily: 'REM, sans-serif',
+      fontSize: 18,
+      '@media (max-width:1000px)': {
+        fontSize: 16,
+      },
+      '@media (max-width:500px)': {
+        fontSize: 14,
+      }
     }
   },
 });

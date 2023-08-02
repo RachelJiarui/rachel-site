@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { makeStyles, createStyles } from "@mui/styles";
 import axios from 'axios';
+import DownloadingIcon from '@mui/icons-material/Downloading';
 
 const styles = makeStyles((theme) =>
   createStyles({
@@ -10,7 +11,14 @@ const styles = makeStyles((theme) =>
     },
     grayifyImage: {
       filter: "grayscale(75%)"
-    }
+    },
+    align: {
+      width: '15vh',
+      height: '22vh',
+      display: 'flex',
+      justifyContent: 'center',
+      alignItems: "center",
+    },
   })
 );
 
@@ -41,7 +49,12 @@ const MusicCard = ({ music, isGray }) => {
   }, [music.title]);
 
   return (
-      <img className={`${classes.galleryImage} ${isGray ? classes.grayifyImage : ''}`} src={coverUrl} alt={music.title} />
+    coverUrl ?
+      (<img className={`${classes.galleryImage} ${isGray ? classes.grayifyImage : ''}`} src={coverUrl} alt={music.title} />) : (
+        <div className={classes.align}>
+          <DownloadingIcon/>
+        </div>
+    )
   );
 };
 

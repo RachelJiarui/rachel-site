@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { makeStyles, createStyles } from "@mui/styles";
 import axios from 'axios';
+import DownloadingIcon from '@mui/icons-material/Downloading';
 
 const styles = makeStyles((theme) =>
   createStyles({
@@ -10,7 +11,14 @@ const styles = makeStyles((theme) =>
     },
     grayifyImage: {
       filter: "grayscale(75%)"
-    }
+    },
+    align: {
+      width: '15vh',
+      height: '22vh',
+      display: 'flex',
+      justifyContent: 'center',
+      alignItems: "center",
+    },
   })
 );
 
@@ -58,7 +66,12 @@ const MangaCard = ({ book, isGray }) => {
   }, [book.title]);
 
   return (
-      <img className={`${classes.galleryImage} ${isGray ? classes.grayifyImage : ''}`} src={coverUrl} alt={book.title} />
+    coverUrl ?
+      (<img className={`${classes.galleryImage} ${isGray ? classes.grayifyImage : ''}`} src={coverUrl} alt={book.title} />) : (
+        <div className={classes.align}>
+          <DownloadingIcon/>
+        </div>
+    )
   );
 };
 

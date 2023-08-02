@@ -4,15 +4,11 @@ import { Grid, Button, Typography } from "@mui/material";
 import NavLink from './NavLink';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import ExpandLessIcon from '@mui/icons-material/ExpandLess';
+import { navBarCollection, navBarExpandElements } from '../../../content-manager/navbar-and-links'
 
 const styles = makeStyles((theme) =>
   createStyles({
     header: {
-      textTransform: 'uppercase',
-      fontFamily: 'REM, sans-serif',
-      fontSize: 18,
-      fontWeight: 500,
-      color: theme.palette.main.black,
       margin: 4,
       borderBottom: "1px solid"
     },
@@ -49,75 +45,7 @@ const NavBar = () => {
   const classes = styles();
   const [isExpanded, setIsExpanded] = useState(true)
   const [pointingLink, setPointingLink] = useState("")
-
-  const navBarCollection = [
-    {
-      name: "Influential Library",
-      href: "/library",
-      sub_menu: [
-        {
-          name: "Reading Now",
-          href: "/library/now"
-        }
-      ]
-    },
-    {
-      name: "Japanese Comics",
-      href: "/mangas",
-      sub_menu: [
-        {
-          name: "Reading Now",
-          href: "/mangas/now"
-        }
-      ]
-    },
-    {
-      name: "Music Catalog",
-      href: "/music",
-      sub_menu: [
-        {
-          name: "Listening Now",
-          href: "/music/now"
-        },
-      ]
-    },
-    {
-      name: "Design & Philosophy",
-      href: "/inspo-philo",
-      sub_menu: [
-        {
-          name: "Current Inspiration",
-          href: "/inspo-philo/now"
-        }
-      ]
-    }
-  ]
-
-  const navBarExpandElements = [
-    {
-      heading: "Reflections",
-      elements: [
-        {
-          name: "First Year at NEU",
-          href: "/reflections/neu-freshman"
-        }
-      ]
-    },
-    {
-      heading: "Interesting Links",
-      elements: [
-        {
-          name: "Interesting Websites",
-          href: "#"
-        },
-        {
-          name: "My Workflow Tools",
-          href: "#"
-        }
-      ]
-    }
-  ]
-
+  
   const handleExpandMore = () => {
     setIsExpanded(!isExpanded);
   }
@@ -128,7 +56,7 @@ const NavBar = () => {
       className={classes.keepingTop}
       direction="column">
       <Grid item>
-        <p className={classes.header}>My Collections</p>
+        <Typography variant="header" className={classes.header}>My Collections</Typography>
       </Grid>
       {navBarCollection.map((element, index) => (
         <Grid item key={`navBarNecessities-${index}`}>
@@ -144,7 +72,7 @@ const NavBar = () => {
         navBarExpandElements.map((group, index) => (
           <div key={`navBarExpansion-${index}`}>
             <Grid item>
-              <p className={classes.header}>{group.heading}</p>
+              <Typography variant="header" className={classes.header}>{group.heading}</Typography>
             </Grid>
             {group.elements.map((element, index) => (
               <Grid item key={`navBarExpansionGroup-${index}`}>

@@ -4,6 +4,7 @@ import PageContainer from "./components/common/PageContainer";
 import InspoPhiloHeader from "./components/InspoPhiloHeader";
 import ImageCard from "./components/cards/ImageCard";
 import TextCard from "./components/cards/TextCard";
+import { items } from '../content-manager/inspo-philo';
 
 const styles = makeStyles((theme) =>
   createStyles({
@@ -12,22 +13,6 @@ const styles = makeStyles((theme) =>
     },
   })
 );
-
-const items = [
-  {
-    text: "welcome to the end of the world, mr. loverman."
-  },
-  {
-    image: "/images/cat_comp_projects.png",
-  },
-  {
-    header: "this is weird",
-    text: "this is an interesting little thing I wonder what kind of rats live in the house. this is an interesting little thing I wonder what kind of rats live in the house. this is an interesting little thing I wonder what kind of rats live in the house. this is an interesting little thing I wonder what kind of rats live in the house. this is an interesting little thing I wonder what kind of rats live in the house. this is an interesting little thing I wonder what kind of rats live in the house."
-  },
-  {
-    image: "/images/face_comp_cat.png"
-  }
-]
 
 const InspoPhilo = () => {
   const classes = styles();

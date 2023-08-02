@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { makeStyles, createStyles } from "@mui/styles";
 import { Typography, Grid} from "@mui/material";
 import NavBar from "./NavBar";
@@ -19,19 +19,41 @@ const styles = makeStyles((theme) =>
       transform: 'translateX(-50%) translateY(-25%)',
     },
     childrenContainer: {
-      paddingTop: '4vh'
+      marginTop: '4vh'
     },
     hover: {
+      zIndex: 343,
       cursor: 'grab',
       '&:hover': {
         color: "#6b6b6b"
       },
-    }
+    },
+    animateContainer: {
+      opacity: 0,
+      transform: 'translateY(10px)',
+      transition: 'opacity 1s ease, transform 1.5s ease-in-out',
+    },
+    loaded: {
+      opacity: 1,
+      transform: 'translateY(0)',
+    },
   })
 );
 
 const PageContainer = ({ children }) => {
   const classes = styles();
+
+  const [loaded, setLoaded] = useState(false);
+
+  useEffect(() => {
+    // Simulate page loading delay (you can replace this with actual page loading logic)
+    const loadingTimeout = setTimeout(() => {
+      setLoaded(true);
+    }, 0);
+
+    // Clean up the timeout when the component unmounts
+    return () => clearTimeout(loadingTimeout);
+  }, []);
 
   return (
     <div className={classes.container}>
@@ -45,7 +67,7 @@ const PageContainer = ({ children }) => {
                 </Link>
               </div>
             </Grid>
-            <Grid item className={classes.childrenContainer}>
+            <Grid item className={`${classes.childrenContainer} ${classes.animateContainer} ${loaded ? classes.loaded : ''}`}>
               {children}
             </Grid>
           </Grid>

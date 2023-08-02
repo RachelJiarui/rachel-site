@@ -44,12 +44,10 @@ const AmIReal = () => {
 
   return (
     <div className={classes.container}>
-      <a target="_blank" href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" className={classes.link}>
-        <Typography
-          variant="h2">
-            "Am I Real?"
-        </Typography>
-      </a>
+      <Typography
+        variant="h2">
+          "Am I Real?"
+      </Typography>
       <div variant="h4" className={classes.iconContainer}>
         <Link href="/" target="_blank" className={classes.link}>
           <EmailIcon className={classes.iconSpacing}/>

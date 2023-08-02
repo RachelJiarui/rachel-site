@@ -3,6 +3,7 @@ import { makeStyles, createStyles } from "@mui/styles";
 import { Grid, Typography } from "@mui/material";
 import PageContainer from "./components/common/PageContainer";
 import BookCard from "./components/cards/BookCard";
+import { bookList, libraryDefaultCaption } from '../content-manager/library';
 
 const styles = makeStyles((theme) =>
   createStyles({
@@ -25,7 +26,10 @@ const styles = makeStyles((theme) =>
       position: 'fixed',
       bottom: 0,
       right: 0,
-      padding: '4vw',
+      paddingTop: '2vw',
+      paddingRight: '2vw',
+      paddingLeft: '2vw',
+      paddingBottom: '0',
       flexGrow: 1,
       direction: "rtl"
     },
@@ -62,107 +66,6 @@ const styles = makeStyles((theme) =>
   })
 );
 
-const bookList = [
-  {
-    title: "BFG",
-    author: "dahl",
-    caption: "Pretty good Pretty good Pretty good Pretty good Pretty good Pretty good Pretty good Pretty good ",
-    quote: "All is well"
-  },
-  {
-    title: "Dune (1965)",
-    author: "Frank Herbert",
-    caption: "Pretty good Pretty good Pretty good Pretty good Pretty good Pretty good Pretty good Pretty good "
-  },
-  {
-    title: "dune (1965)",
-    author: "herbert",
-    caption: "Pretty good Pretty good Pretty good Pretty good Pretty good Pretty good Pretty good Pretty good "
-  },
-  {
-    title: "dune (1965)",
-    author: "herbert",
-    caption: "Pretty good Pretty good Pretty good Pretty good Pretty good Pretty good Pretty good Pretty good "
-  },
-  {
-    title: "dune (1965)",
-    author: "herbert",
-    caption: "Pretty good Pretty good Pretty good Pretty good Pretty good Pretty good Pretty good Pretty good "
-  },
-  {
-    title: "dune (1965)",
-    author: "herbert",
-    caption: "Pretty good Pretty good Pretty good Pretty good Pretty good Pretty good Pretty good Pretty good "
-  },
-  {
-    title: "dune (1965)",
-    author: "herbert",
-    caption: "Pretty good Pretty good Pretty good Pretty good Pretty good Pretty good Pretty good Pretty good "
-  },
-  {
-    title: "dune (1965)",
-    author: "herbert",
-    caption: "Pretty good Pretty good Pretty good Pretty good Pretty good Pretty good Pretty good Pretty good "
-  },
-  {
-    title: "dune (1965)",
-    author: "herbert",
-    caption: "Pretty good Pretty good Pretty good Pretty good Pretty good Pretty good Pretty good Pretty good "
-  },
-  {
-    title: "dune (1965)",
-    author: "herbert",
-    caption: "Pretty good Pretty good Pretty good Pretty good Pretty good Pretty good Pretty good Pretty good "
-  },
-  {
-    title: "dune (1965)",
-    author: "herbert",
-    caption: "Pretty good Pretty good Pretty good Pretty good Pretty good Pretty good Pretty good Pretty good "
-  },
-  {
-    title: "dune (1965)",
-    author: "herbert",
-    caption: "Pretty good Pretty good Pretty good Pretty good Pretty good Pretty good Pretty good Pretty good "
-  },
-  {
-    title: "dune (1965)",
-    author: "herbert",
-    caption: "Pretty good Pretty good Pretty good Pretty good Pretty good Pretty good Pretty good Pretty good "
-  },
-  {
-    title: "dune (1965)",
-    author: "herbert",
-    caption: "Pretty good Pretty good Pretty good Pretty good Pretty good Pretty good Pretty good Pretty good "
-  },
-  {
-    title: "dune",
-    author: "herbert",
-    caption: "Pretty good Pretty good Pretty good Pretty good Pretty good Pretty good"
-  },
-  {
-    title: "dune",
-    author: "herbert",
-    caption: "Pretty good Pretty good Pretty good Pretty good Pretty good Pretty good Pretty good Pretty good Pretty good Pretty good Pretty good Pretty good Pretty good "
-  },
-  {
-    title: "dune",
-    author: "herbert",
-    caption: "Pretty good Pretty good Pretty good Pretty good Pretty good Pretty good Pretty good "
-  },
-  {
-    title: "dune",
-    author: "herbert",
-    caption: "Pretty good Pretty good Pretty good Pretty good Pretty good Pretty good Pretty good Pretty good"
-  },
-  {
-    title: "dune",
-    author: "herbert",
-    caption: "Pretty good Pretty good"
-  },
-]
-
-const defaultCaption = "This is an influential library"
-
 const Library = () => {
   const classes = styles();
   const [selectedBook, setSelectedBook] = useState(null)
@@ -196,13 +99,13 @@ const Library = () => {
           <Typography
             variant="h2"
             className={classes.pointerCursor}
-            onClick={handleReset}>Influential Library</Typography>
+            onClick={handleReset}>Book Library</Typography>
           {selectedBook ?
             <>
               <Typography variant="body2" className={classes.quote}>{selectedBook.quote}</Typography>
               <Typography variant="body1" className={classes.caption}>{selectedBook.caption}</Typography>
             </>
-          : <Typography variant="body1" className={classes.caption}>{defaultCaption}</Typography>}
+          : <Typography variant="body1" className={classes.caption}>{libraryDefaultCaption}</Typography>}
         </Grid>
       </Grid>
 

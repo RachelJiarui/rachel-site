@@ -4,6 +4,7 @@ import { Grid, Typography } from "@mui/material";
 import Masonry from '@mui/lab/Masonry';
 import PageContainer from "./components/common/PageContainer";
 import MangaCard from "./components/cards/MangaCard";
+import { mangaList, mangaDefaultCaption } from '../content-manager/mangas';
 
 const styles = makeStyles((theme) =>
   createStyles({
@@ -26,7 +27,10 @@ const styles = makeStyles((theme) =>
       position: 'fixed',
       bottom: 0,
       right: 0,
-      padding: '4vw',
+      paddingTop: '2vw',
+      paddingRight: '2vw',
+      paddingLeft: '2vw',
+      paddingBottom: '0',
       flexGrow: 1,
       direction: "rtl"
     },
@@ -58,47 +62,6 @@ const styles = makeStyles((theme) =>
     }
   })
 );
-
-const mangaList = [
-  {
-    title: "Goodnight Punpun",
-    author: "idk",
-    caption: "Pretty good",
-    images: [
-      {
-        href: "/images/cat_comp_projects.png"
-      },
-      {
-        href: "/images/cat_comp_projects.png"
-      },
-      {
-        href: "/images/cat_comp_projects.png"
-      },
-    ]
-  },
-  {
-    title: "Blood on the Tracks",
-    author: "idk",
-    caption: "Gas"
-  },
-  {
-    title: "Blood on the Tracks",
-    author: "idk",
-    caption: "Gas"
-  },
-  {
-    title: "Blood on the Tracks",
-    author: "idk",
-    caption: "Gas"
-  },
-  {
-    title: "Blood on the Tracks",
-    author: "idk",
-    caption: "Gas"
-  },
-]
-
-const defaultCaption = "This is my manga collection"
 
 const Mangas = () => {
   const classes = styles();
@@ -139,7 +102,7 @@ const Mangas = () => {
           <Typography
             variant="h2"
             className={classes.pointerCursor}
-            onClick={handleReset}>Japanese Comics</Typography>
+            onClick={handleReset}>Mangas & Anime</Typography>
           {selectedManga ?
             <>
               <Masonry columns={{ xs: 1, md: 2 }} spacing={2}>
@@ -149,7 +112,7 @@ const Mangas = () => {
               </Masonry>
               <Typography variant="body1" className={classes.caption}>{selectedManga.caption}</Typography>
             </>
-          : <Typography variant="body1" className={classes.caption}>{defaultCaption}</Typography>}
+          : <Typography variant="body1" className={classes.caption}>{mangaDefaultCaption}</Typography>}
         </Grid>
       </Grid>
 

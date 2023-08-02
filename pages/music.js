@@ -3,6 +3,7 @@ import { makeStyles, createStyles } from "@mui/styles";
 import { Grid, Typography } from "@mui/material";
 import PageContainer from "./components/common/PageContainer";
 import MusicCard from "./components/cards/MusicCard";
+import { musicList, musicDefaultCaption } from '../content-manager/music';
 
 const styles = makeStyles((theme) =>
   createStyles({
@@ -25,7 +26,10 @@ const styles = makeStyles((theme) =>
       position: 'fixed',
       bottom: 0,
       right: 0,
-      padding: '4vw',
+      paddingTop: '2vw',
+      paddingRight: '2vw',
+      paddingLeft: '2vw',
+      paddingBottom: '0',
       flexGrow: 1,
       direction: "rtl"
     },
@@ -55,27 +59,8 @@ const styles = makeStyles((theme) =>
     captionSpacing: {
       padding: "2vw"
     },
-    imgPositioning: {
-      position: 'absolute',
-      width: '45%',
-      height: 'auto',
-      top: "15vh", 
-      left: '45vw',
-      transform: 'translateY(10%) translateX(-35%)',
-    },
   })
 );
-
-const musicList = [
-  {
-    title: "A Lonely Night",
-    artist: "The Weeknd",
-    history: "From 'Starboy'",
-    caption: "Caption"
-  },
-]
-
-const defaultCaption = "This is my music"
 
 const Music = () => {
   const classes = styles();
@@ -117,7 +102,7 @@ const Music = () => {
             <Typography variant="body1" className={classes.caption}>{selectedMusic.caption}</Typography>
           </>
            :
-            <Typography variant="body1" className={classes.caption}>{defaultCaption}</Typography>}
+            <Typography variant="body1" className={classes.caption}>{musicDefaultCaption}</Typography>}
         </Grid>
       </Grid>
 
@@ -128,7 +113,6 @@ const Music = () => {
           <p className={classes.author}>{"by " + selectedMusic.author}</p>
         </div>
       )}
-      <img className={classes.imgPositioning} src="/images/cat_music.png"/>
     </PageContainer>
   );
 };

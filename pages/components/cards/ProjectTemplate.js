@@ -7,7 +7,7 @@ import GitHubIcon from '@mui/icons-material/GitHub';
 const styles = makeStyles((theme) =>
   createStyles({
     textContainer: {
-      margin: '4vw'
+      margin: '2vw'
     },
     sectionSpacing: {
       paddingBottom: 64,
@@ -47,7 +47,14 @@ const styles = makeStyles((theme) =>
     },
     skills: {
       display: 'inline'
-    }
+    },
+    dottedLine: {
+      content: '""',
+      flex: '1 0 auto',
+      height: 0,
+      borderBottom: '2px dotted #000',
+      marginTop: '2%'
+    },
   })
 );
 
@@ -93,6 +100,7 @@ const ProjectTemplate = ( {content} ) => {
             </div>
           ))}
         </Grid>
+
         <Typography className={classes.heading} variant="h4">Related Content</Typography>
         <Grid container flexDirection="column">
           {content.resources.map((element, index) => (
@@ -101,6 +109,7 @@ const ProjectTemplate = ( {content} ) => {
                 <Grid item xs={6}>
                   <a className={classes.link} target="_blank" href={element.resource_link}>
                     <Typography variant="body1">{element.resource_name}</Typography>
+                    <span className={classes.dottedLine}/>
                   </a>
                 </Grid>
                 <Grid item xs={6}>

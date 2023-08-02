@@ -6,8 +6,15 @@ import PageContainer from '../common/PageContainer';
 const styles = makeStyles((theme) =>
   createStyles({
     reflectionContainer: {
-      paddingLeft: "12vw",
-      paddingRight: "12vw"
+      marginLeft: "10vw",
+      marginRight: "10vw"
+    },
+    imageContainer: {
+      maxWidth: '100%',
+    },
+    image: {
+      maxWidth: '100%',
+      height: 'auto'
     }
   })
 );
@@ -18,36 +25,36 @@ const ReflectionTemplate = ( {content} ) => {
   return (
     <PageContainer>
       <div className={classes.reflectionContainer}>
-        <div className={classes.title}>
+        <Typography variant="h2" className={classes.title}>
           {content.title}
-        </div>
-        <div className={classes.date}>
+        </Typography>
+        <Typography variant="body1" className={classes.date}>
           {content.date}
-        </div>
-        <div className={classes.image}>
-          <img src={content.imageUrl} alt="image"/>
+        </Typography>
+        <div>
+          <img className={classes.image} src={content.imageUrl} alt="image"/>
         </div>
         {content.sections.map((section, index) => (
           <div key={`section-${index}`}>
-            <div className={classes.heading}>{section.heading}</div>
+            <Typography variant="h4" className={classes.heading}>{section.heading}</Typography>
             {section.paragraphs.map((paragraph, subindex) =>
               {return paragraph.text ?
-                <div key={`paragraph-${subindex}`} className={classes.text}>{paragraph.text}</div> :
+                <Typography variant="body1" key={`paragraph-${subindex}`} className={classes.text}>{paragraph.text}</Typography> :
                 paragraph.unordered ? (
-                  <div className={classes.list}>
+                  <Typography variant="body1" className={classes.list}>
                     <ul>
                       {paragraph.list.map((item, listindex) => (
                         <li key={`listItem-${index}-${listindex}`}>{item}</li>
                       ))}
                     </ul>
-                  </div>
+                  </Typography>
                 ) : (
                   <ol>
-                    <div className={classes.list}>
+                    <Typography variant="body1" className={classes.list}>
                       {paragraph.list.map((item, listindex) => (
                         <li key={`listItem-${index}-${listindex}`}>{item}</li>
                       ))}
-                    </div>
+                    </Typography>
                   </ol>
                 )
               }

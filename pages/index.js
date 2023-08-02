@@ -5,6 +5,7 @@ import SpinningMan from './components/SpinningMan';
 import AmIReal from './components/AmIReal';
 import NavBar from './components/common/NavBar';
 import Link from "next/link";
+import { technicalProjectsList } from '../content-manager/projects';
 
 const styles = makeStyles((theme) =>
   createStyles({
@@ -90,33 +91,6 @@ const styles = makeStyles((theme) =>
     }
   })
 );
-
-const technicalProjectsList = [
-  {
-    name: "Code Synthesization using Large Language Models",
-    href: "/projects/synth-LLM"
-  },
-  {
-    name: "Uotchis: Secure Hardware and Non-Fungibility",
-    href: "/projects/uotchis"
-  },
-  {
-    name: "Speech Identification and Generation",
-    href: "/projects/speech-ai"
-  },
-  {
-    name: "Image Seam Carver",
-    href: "/projects/image-seam-carver"
-  },
-  {
-    name: "Invictuss Services Page",
-    href: "/projects/invictuss"
-  },
-  {
-    name: "Rachel-Site",
-    href: "/projects/rachel-site"
-  }
-]
 
 export default function HomePage() {
   const classes = styles();
